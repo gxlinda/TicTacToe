@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("value9", value9);
         outState.putInt("actualPlayer", actualPlayer);
         outState.putString("nyertes", nyertes);
+        outState.putInt("onClockCounter", onClockCounter);
 
         super.onSaveInstanceState(outState);
     }
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             value9 = savedInstanceState.getString("value9");
             actualPlayer = savedInstanceState.getInt("actualPlayer");
             nyertes = savedInstanceState.getString("nyertes");
+            onClockCounter = savedInstanceState.getInt("onClockCounter");
 
             choosedBox1.setText(value1);
             choosedBox2.setText(value2);
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             displayWhoIsNext.setText("Game over!");
         }
 
-        if (onClockCounter == 9) {
+        if (onClockCounter == 9 && nyertes == "") {
             statusChange.setText("Draw!" );
 
             TextView displayWhoIsNext = (TextView) findViewById(R.id.whosTurn);
