@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#444444"
+    tools:context="hu.gearxpert.tictactoe.MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/description"
+        android:layout_margin="30dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Plaxer1: X\nPlayer2: 0"
+        android:textColor="#ffffff"
+        android:id="@+id/description"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/whosTurn"
+        android:text="Player1 turn"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/description"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start new game"
+            android:onClick="newGame"
+            android:layout_marginTop="25dp"
+            android:textColor="#333333"
+            android:layout_gravity="center_horizontal"/>
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/grid"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:layout_margin="15dp"
+        android:layout_weight="1">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box1"
+            android:onClick="box1"/>
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#c1bdbd"/>
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box2"
+            android:onClick="box2"/>
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#c1bdbd"/>
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box3"
+            android:onClick="box3"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="214dp"
+        android:layout_height="2dp"
+        android:background="#c1bdbd"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box4"
+            android:onClick="box4"/>
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#c1bdbd"/>
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box5"
+            android:layout_height="match_parent"
+            android:onClick="box5"/>
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#c1bdbd"/>
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box6"
+            android:onClick="box6"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="214dp"
+        android:layout_height="2dp"
+        android:background="#c1bdbd"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box7"
+            android:onClick="box7"/>
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#c1bdbd"/>
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box8"
+            android:onClick="box8"/>
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#c1bdbd"/>
+
+        <TextView
+            style="@style/textX_O"
+            android:id="@+id/box9"
+            android:onClick="box9"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
