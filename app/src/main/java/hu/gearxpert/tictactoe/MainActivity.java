@@ -1,5 +1,6 @@
 package hu.gearxpert.tictactoe;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     TextView choosedBox8;
     TextView choosedBox9;
 
+    TextView statusChange;
+
+    TextView displayWhoIsNext;
+
     /**
      * Elmentjük az összes értéket, amit pl. a képernyő elforgatása után vissza akarunk tölteni
      */
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("nyertes", nyertes);
         outState.putInt("onClockCounter", onClockCounter);
 
+
         super.onSaveInstanceState(outState);
     }
 
@@ -66,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         choosedBox7 = (TextView) findViewById(R.id.box7);
         choosedBox8 = (TextView) findViewById(R.id.box8);
         choosedBox9 = (TextView) findViewById(R.id.box9);
+        statusChange = (TextView) findViewById(R.id.status);
+        displayWhoIsNext = (TextView) findViewById(R.id.whosTurn);
 
         //visszatöltjük az adatokat pl. elforgatás után
         if (savedInstanceState != null) {
@@ -93,37 +101,29 @@ public class MainActivity extends AppCompatActivity {
             choosedBox9.setText(value9);
             whoIsNext();
             status();
+            winner();
         }
     }
 
     public void status () {
 
-        TextView statusChange = (TextView) findViewById(R.id.status);
-
         if (nyertes == "X") {
             statusChange.setText("The winner is Player1");
-
-            TextView displayWhoIsNext = (TextView) findViewById(R.id.whosTurn);
             displayWhoIsNext.setText("Game over!");
         }
 
         if (nyertes == "O") {
             statusChange.setText("The winner is Player2");
-
-            TextView displayWhoIsNext = (TextView) findViewById(R.id.whosTurn);
             displayWhoIsNext.setText("Game over!");
         }
 
         if (onClockCounter == 9 && nyertes == "") {
             statusChange.setText("Draw!" );
-
-            TextView displayWhoIsNext = (TextView) findViewById(R.id.whosTurn);
             displayWhoIsNext.setText("Game over!");
         }
     }
 
     public void whoIsNext () {
-            TextView displayWhoIsNext = (TextView) findViewById(R.id.whosTurn);
             displayWhoIsNext.setText("Player" + actualPlayer + " turn");
     }
 
@@ -423,27 +423,51 @@ public class MainActivity extends AppCompatActivity {
         String _return = "";
         if (value1 == value2 && value2 == value3 && value1 != "") {
             _return =  value1;
+            choosedBox1.setTextColor(Color.MAGENTA);
+            choosedBox2.setTextColor(Color.MAGENTA);
+            choosedBox3.setTextColor(Color.MAGENTA);
         }
         if (value4 == value5 && value5 == value6 && value4 != "") {
             _return =  value4;
+            choosedBox4.setTextColor(Color.MAGENTA);
+            choosedBox5.setTextColor(Color.MAGENTA);
+            choosedBox6.setTextColor(Color.MAGENTA);
         }
         if (value7 == value8 && value8 == value9 && value7 != "") {
             _return =  value7;
+            choosedBox7.setTextColor(Color.MAGENTA);
+            choosedBox8.setTextColor(Color.MAGENTA);
+            choosedBox9.setTextColor(Color.MAGENTA);
         }
         if (value1 == value4 && value4 == value7 && value1 != "") {
             _return =  value1;
+            choosedBox1.setTextColor(Color.MAGENTA);
+            choosedBox4.setTextColor(Color.MAGENTA);
+            choosedBox7.setTextColor(Color.MAGENTA);
         }
         if (value2 == value5 && value5 == value8 && value2 != "") {
             _return =  value2;
+            choosedBox2.setTextColor(Color.MAGENTA);
+            choosedBox5.setTextColor(Color.MAGENTA);
+            choosedBox8.setTextColor(Color.MAGENTA);
         }
         if (value3 == value6 && value6 == value9 && value3 != "") {
             _return =  value3;
+            choosedBox3.setTextColor(Color.MAGENTA);
+            choosedBox6.setTextColor(Color.MAGENTA);
+            choosedBox9.setTextColor(Color.MAGENTA);
         }
         if (value1 == value5 && value5 == value9 && value1 != "") {
             _return =  value1;
+            choosedBox1.setTextColor(Color.MAGENTA);
+            choosedBox5.setTextColor(Color.MAGENTA);
+            choosedBox9.setTextColor(Color.MAGENTA);
         }
         if (value3 == value5 && value5 == value7 && value3 != "") {
             _return =  value3;
+            choosedBox3.setTextColor(Color.MAGENTA);
+            choosedBox5.setTextColor(Color.MAGENTA);
+            choosedBox7.setTextColor(Color.MAGENTA);
         }
         nyertes = _return;
     }
@@ -464,17 +488,19 @@ public class MainActivity extends AppCompatActivity {
         choosedBox7.setText("");
         choosedBox8.setText("");
         choosedBox9.setText("");
-
+        choosedBox1.setTextColor(Color.WHITE);
+        choosedBox2.setTextColor(Color.WHITE);
+        choosedBox3.setTextColor(Color.WHITE);;
+        choosedBox4.setTextColor(Color.WHITE);
+        choosedBox5.setTextColor(Color.WHITE);
+        choosedBox6.setTextColor(Color.WHITE);
+        choosedBox7.setTextColor(Color.WHITE);
+        choosedBox8.setTextColor(Color.WHITE);
+        choosedBox9.setTextColor(Color.WHITE);
         onClockCounter = 0;
-
         actualPlayer = 1;
-
-        TextView status = (TextView) findViewById(R.id.status);
-        status.setText("");
-
-        TextView whoIsNext = (TextView) findViewById(R.id.whosTurn);
-        whoIsNext.setText("Player1 turn");
-
+        statusChange.setText("");
+        displayWhoIsNext.setText("Player1 turn");
         value1 = "";
         value2 = "";
         value3 = "";
@@ -484,8 +510,6 @@ public class MainActivity extends AppCompatActivity {
         value7 = "";
         value8 = "";
         value9 = "";
-
         nyertes = "";
-
     }
 }
