@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(SaveInstanceNameValue7, value7);
         outState.putString(SaveInstanceNameValue8, value8);
         outState.putString(SaveInstanceNameValue9, value9);
-        outState.putInt("actualPlayer", actualPlayer); // itt a KEY string, ezért figyelni kell, nehogy máshol a későbbiekben elgépeljük!
+        outState.putInt("actualPlayer", actualPlayer); // itt a KEY string, ezért figyelni kell, nehogy máshol a későbbiekben elgépeljük...
         outState.putString("nyertes", nyertes);
         outState.putInt("onClockCounter", onClockCounter);
 
