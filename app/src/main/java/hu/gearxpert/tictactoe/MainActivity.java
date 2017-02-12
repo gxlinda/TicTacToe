@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     String value8 = "";
     String value9 = "";
     String nyertes = "";
-
-
     TextView choosedBox1; //létrehozzuk az objektumot, de még nem tud paramétert felvenni, mivel nem futott le az onCreate
     TextView choosedBox2;
     TextView choosedBox3;
@@ -31,29 +29,35 @@ public class MainActivity extends AppCompatActivity {
     TextView choosedBox7;
     TextView choosedBox8;
     TextView choosedBox9;
-
     TextView statusChange;
-
     TextView displayWhoIsNext;
+    static final String SaveInstanceNameValue1 = "v1"; // azért hozzuk létre, hogy a putStringben és a getStringben a változó nevét hívhassuk meg >> így nem stringként kezeli, és pirossal jelzi ha vmi hibás benne
+    static final String SaveInstanceNameValue2 = "v2";
+    static final String SaveInstanceNameValue3 = "v3";
+    static final String SaveInstanceNameValue4 = "v4";
+    static final String SaveInstanceNameValue5 = "v5";
+    static final String SaveInstanceNameValue6 = "v6";
+    static final String SaveInstanceNameValue7 = "v7";
+    static final String SaveInstanceNameValue8 = "v8";
+    static final String SaveInstanceNameValue9 = "v9";
 
     /**
      * Elmentjük az összes értéket, amit pl. a képernyő elforgatása után vissza akarunk tölteni
      */
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putString("value1", value1);
-        outState.putString("value2", value2);
-        outState.putString("value3", value3);
-        outState.putString("value4", value4);
-        outState.putString("value5", value5);
-        outState.putString("value6", value6);
-        outState.putString("value7", value7);
-        outState.putString("value8", value8);
-        outState.putString("value9", value9);
-        outState.putInt("actualPlayer", actualPlayer);
+        outState.putString(SaveInstanceNameValue1, value1);
+        outState.putString(SaveInstanceNameValue2, value2);
+        outState.putString(SaveInstanceNameValue3, value3);
+        outState.putString(SaveInstanceNameValue4, value4);
+        outState.putString(SaveInstanceNameValue5, value5);
+        outState.putString(SaveInstanceNameValue6, value6);
+        outState.putString(SaveInstanceNameValue7, value7);
+        outState.putString(SaveInstanceNameValue8, value8);
+        outState.putString(SaveInstanceNameValue9, value9);
+        outState.putInt("actualPlayer", actualPlayer); // itt a KEY string, ezért figyelni kell, nehogy máshol a későbbiekben elgépeljük!
         outState.putString("nyertes", nyertes);
         outState.putInt("onClockCounter", onClockCounter);
-
 
         super.onSaveInstanceState(outState);
     }
@@ -77,19 +81,18 @@ public class MainActivity extends AppCompatActivity {
 
         //visszatöltjük az adatokat pl. elforgatás után
         if (savedInstanceState != null) {
-            value1 = savedInstanceState.getString("value1");
-            value2 = savedInstanceState.getString("value2");
-            value3 = savedInstanceState.getString("value3");
-            value4 = savedInstanceState.getString("value4");
-            value5 = savedInstanceState.getString("value5");
-            value6 = savedInstanceState.getString("value6");
-            value7 = savedInstanceState.getString("value7");
-            value8 = savedInstanceState.getString("value8");
-            value9 = savedInstanceState.getString("value9");
+            value1 = savedInstanceState.getString(SaveInstanceNameValue1);
+            value2 = savedInstanceState.getString(SaveInstanceNameValue2);
+            value3 = savedInstanceState.getString(SaveInstanceNameValue3);
+            value4 = savedInstanceState.getString(SaveInstanceNameValue4);
+            value5 = savedInstanceState.getString(SaveInstanceNameValue5);
+            value6 = savedInstanceState.getString(SaveInstanceNameValue6);
+            value7 = savedInstanceState.getString(SaveInstanceNameValue7);
+            value8 = savedInstanceState.getString(SaveInstanceNameValue8);
+            value9 = savedInstanceState.getString(SaveInstanceNameValue9);
             actualPlayer = savedInstanceState.getInt("actualPlayer");
             nyertes = savedInstanceState.getString("nyertes");
             onClockCounter = savedInstanceState.getInt("onClockCounter");
-
             choosedBox1.setText(value1);
             choosedBox2.setText(value2);
             choosedBox3.setText(value3);
@@ -129,11 +132,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box1 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box1); //Itt adom meg az adattípust, és hogy melyik boxot keresem
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") { // csak akkor változtatunk értéket, ha a tartalom hossza 0 (hogy ne írja felül) ÉS még nincs nyertes
+           if (choosedBox1.getText().length() == 0 && nyertes == "") { // csak akkor változtatunk értéket, ha a tartalom hossza 0 (hogy ne írja felül) ÉS még nincs nyertes
                 if (actualPlayer == 1){
-                    choosedBox.setText("X"); //Itt már nem kell megadni újra az adattípust és a boxot, mert fentebb már megadtuk
+                    choosedBox1.setText("X"); //Itt már nem kell megadni újra az adattípust és a boxot, mert fentebb már megadtuk
                     actualPlayer = 2;
                     onClockCounter = onClockCounter + 1;
                     value1 = "X";
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }//if 2
                 else {
-                    choosedBox.setText("O");
+                    choosedBox1.setText("O");
                     actualPlayer = 1;
                     onClockCounter = onClockCounter + 1;
                     value1 = "O";
@@ -161,11 +162,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box2 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box2);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") {
+        if (choosedBox2.getText().length() == 0 && nyertes == "") {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox2.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value2 = "X";
@@ -174,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 status();
             }//if 2
             else {
-                choosedBox.setText("O");
+                choosedBox2.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value2 = "O";
@@ -192,11 +191,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box3 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box3);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") {
+        if (choosedBox3.getText().length() == 0 && nyertes == "") {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox3.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value3 = "X";
@@ -206,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
             }//if 2
 
             else {
-                choosedBox.setText("O");
+                choosedBox3.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value3 = "O";
@@ -224,11 +221,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box4 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box4);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") {
+        if (choosedBox4.getText().length() == 0 && nyertes == "") {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox4.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value4 = "X";
@@ -238,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             }//if 2
 
             else {
-                choosedBox.setText("O");
+                choosedBox4.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value4 = "O";
@@ -256,11 +251,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box5 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box5);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") {
+        if (choosedBox5.getText().length() == 0 && nyertes == "") {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox5.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value5 = "X";
@@ -270,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             }//if 2
 
             else {
-                choosedBox.setText("O");
+                choosedBox5.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value5 = "O";
@@ -288,11 +281,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box6 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box6);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") {
+        if (choosedBox6.getText().length() == 0 && nyertes == "") {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox6.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value6 = "X";
@@ -302,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
             }//if 2
 
             else {
-                choosedBox.setText("O");
+                choosedBox6.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value6 = "O";
@@ -320,11 +311,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box7 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box7);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") {
+        if (choosedBox7.getText().length() == 0 && nyertes == "") {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox7.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value7 = "X";
@@ -334,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
             }//if 2
 
             else {
-                choosedBox.setText("O");
+                choosedBox7.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value7 = "O";
@@ -352,12 +341,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void box8 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box8);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "")
+        if (choosedBox8.getText().length() == 0 && nyertes == "")
         {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox8.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value8 = "X";
@@ -367,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
             }//if 2
 
             else {
-                choosedBox.setText("O");
+                choosedBox8.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value8 = "O";
@@ -385,11 +372,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void box9 (View view) {
 
-        TextView choosedBox = (TextView) findViewById(R.id.box9);
-
-        if (choosedBox.getText().length() == 0 && nyertes == "") {
+        if (choosedBox9.getText().length() == 0 && nyertes == "") {
             if (actualPlayer == 1){
-                choosedBox.setText("X");
+                choosedBox9.setText("X");
                 actualPlayer = 2;
                 onClockCounter = onClockCounter + 1;
                 value9 = "X";
@@ -399,7 +384,7 @@ public class MainActivity extends AppCompatActivity {
             }//if 2
 
             else {
-                choosedBox.setText("O");
+                choosedBox9.setText("O");
                 actualPlayer = 1;
                 onClockCounter = onClockCounter + 1;
                 value9 = "O";
@@ -419,55 +404,61 @@ public class MainActivity extends AppCompatActivity {
      * Megvizsgájuk nyert-e már valaki? Egy ideiglenes _return értékbe tesszük bele a @value értékét, a végén ez lesz a visszaadott return érték. Ez épül be a nyertes változóba.
      */
 
+
+
+    //int winnerColor = Color.parseColor("#0072bb");
+      int winnerColor = Color.parseColor("#0072bb");
     public void winner() {
         String _return = "";
+        
         if (value1 == value2 && value2 == value3 && value1 != "") {
             _return =  value1;
-            choosedBox1.setTextColor(Color.MAGENTA);
-            choosedBox2.setTextColor(Color.MAGENTA);
-            choosedBox3.setTextColor(Color.MAGENTA);
+            choosedBox1.setTextColor(winnerColor);
+            choosedBox2.setTextColor(winnerColor);
+            choosedBox3.setTextColor(winnerColor);
         }
         if (value4 == value5 && value5 == value6 && value4 != "") {
             _return =  value4;
-            choosedBox4.setTextColor(Color.MAGENTA);
-            choosedBox5.setTextColor(Color.MAGENTA);
-            choosedBox6.setTextColor(Color.MAGENTA);
+
+            choosedBox4.setTextColor(winnerColor);
+            choosedBox5.setTextColor(winnerColor);
+            choosedBox6.setTextColor(winnerColor);
         }
         if (value7 == value8 && value8 == value9 && value7 != "") {
             _return =  value7;
-            choosedBox7.setTextColor(Color.MAGENTA);
-            choosedBox8.setTextColor(Color.MAGENTA);
-            choosedBox9.setTextColor(Color.MAGENTA);
+            choosedBox7.setTextColor(winnerColor);
+            choosedBox8.setTextColor(winnerColor);
+            choosedBox9.setTextColor(winnerColor);
         }
         if (value1 == value4 && value4 == value7 && value1 != "") {
             _return =  value1;
-            choosedBox1.setTextColor(Color.MAGENTA);
-            choosedBox4.setTextColor(Color.MAGENTA);
-            choosedBox7.setTextColor(Color.MAGENTA);
+            choosedBox1.setTextColor(winnerColor);
+            choosedBox4.setTextColor(winnerColor);
+            choosedBox7.setTextColor(winnerColor);
         }
         if (value2 == value5 && value5 == value8 && value2 != "") {
             _return =  value2;
-            choosedBox2.setTextColor(Color.MAGENTA);
-            choosedBox5.setTextColor(Color.MAGENTA);
-            choosedBox8.setTextColor(Color.MAGENTA);
+            choosedBox2.setTextColor(winnerColor);
+            choosedBox5.setTextColor(winnerColor);
+            choosedBox8.setTextColor(winnerColor);
         }
         if (value3 == value6 && value6 == value9 && value3 != "") {
             _return =  value3;
-            choosedBox3.setTextColor(Color.MAGENTA);
-            choosedBox6.setTextColor(Color.MAGENTA);
-            choosedBox9.setTextColor(Color.MAGENTA);
+            choosedBox3.setTextColor(winnerColor);
+            choosedBox6.setTextColor(winnerColor);
+            choosedBox9.setTextColor(winnerColor);
         }
         if (value1 == value5 && value5 == value9 && value1 != "") {
             _return =  value1;
-            choosedBox1.setTextColor(Color.MAGENTA);
-            choosedBox5.setTextColor(Color.MAGENTA);
-            choosedBox9.setTextColor(Color.MAGENTA);
+            choosedBox1.setTextColor(winnerColor);
+            choosedBox5.setTextColor(winnerColor);
+            choosedBox9.setTextColor(winnerColor);
         }
         if (value3 == value5 && value5 == value7 && value3 != "") {
             _return =  value3;
-            choosedBox3.setTextColor(Color.MAGENTA);
-            choosedBox5.setTextColor(Color.MAGENTA);
-            choosedBox7.setTextColor(Color.MAGENTA);
+            choosedBox3.setTextColor(winnerColor);
+            choosedBox5.setTextColor(winnerColor);
+            choosedBox7.setTextColor(winnerColor);
         }
         nyertes = _return;
     }
