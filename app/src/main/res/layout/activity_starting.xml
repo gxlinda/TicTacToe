@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#444444"
+    tools:context="hu.gearxpert.tictactoe.StartingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter the name of the players:"
+            android:textColor="#ffffff"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/editBox_player1"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Player1"
+            android:textColorHint="#0072bb"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:inputType="textCapWords"/>
+
+        <EditText
+            android:id="@+id/editBox_player2"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="Player2"
+            android:textColorHint="#0072bb"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:inputType="textCapWords"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="OK"
+            android:layout_margin="25dp"
+            android:onClick="playersNameEntered"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

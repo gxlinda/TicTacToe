@@ -1,5 +1,6 @@
 package hu.gearxpert.tictactoe;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    String _p1name = "Player1";
+    String _p2name = "Player2";
     int actualPlayer = 1;
     int onClockCounter = 0;
     String value1 = "";
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     String value8 = "";
     String value9 = "";
     String nyertes = "";
+    TextView descriptionBox;
     TextView choosedBox1; //létrehozzuk az objektumot, de még nem tud paramétert felvenni, mivel nem futott le az onCreate
     TextView choosedBox2;
     TextView choosedBox3;
@@ -67,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        _p1name = intent.getStringExtra("p1name");
+        _p2name = intent.getStringExtra("p2name");
+
+        descriptionBox = (TextView) findViewById(R.id.description);
+        descriptionBox.setText(_p1name + ": X\n" + _p2name + ": O");
         choosedBox1 = (TextView) findViewById(R.id.box1);  //itt adunk neki paramétert: keresse meg az adott boxot
         choosedBox2 = (TextView) findViewById(R.id.box2);
         choosedBox3 = (TextView) findViewById(R.id.box3);
@@ -78,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         choosedBox9 = (TextView) findViewById(R.id.box9);
         statusChange = (TextView) findViewById(R.id.status);
         displayWhoIsNext = (TextView) findViewById(R.id.whosTurn);
+        displayWhoIsNext.setText(_p1name + "'s turn");
 
         //visszatöltjük az adatokat pl. elforgatás után
         if (savedInstanceState != null) {
@@ -111,12 +122,12 @@ public class MainActivity extends AppCompatActivity {
     public void status () {
 
         if (nyertes == "X") {
-            statusChange.setText("The winner is Player1");
+            statusChange.setText("The winner is " + _p1name);
             displayWhoIsNext.setText("Game over!");
         }
 
         if (nyertes == "O") {
-            statusChange.setText("The winner is Player2");
+            statusChange.setText("The winner is " + _p2name);
             displayWhoIsNext.setText("Game over!");
         }
 
@@ -127,7 +138,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void whoIsNext () {
-            displayWhoIsNext.setText("Player" + actualPlayer + " turn");
+        if (actualPlayer == 1) {
+            displayWhoIsNext.setText(_p1name + "'s turn");
+        } else {
+            displayWhoIsNext.setText(_p2name + "'s turn");
+        }
+
     }
 
     public void box1 (View view) {
@@ -491,7 +507,7 @@ public class MainActivity extends AppCompatActivity {
         onClockCounter = 0;
         actualPlayer = 1;
         statusChange.setText("");
-        displayWhoIsNext.setText("Player1 turn");
+        displayWhoIsNext.setText(_p1name + "'s turn");
         value1 = "";
         value2 = "";
         value3 = "";
